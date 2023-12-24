@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--todo 2 (next MainActvity.kt)-->
+<!--todo 1 -->
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <!--todo 2 -->
+    <data>
+        <variable
+            name="user"
+            type="com.example.kotlinjetpack.User" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+        <!--todo 3-->
         <TextView
             android:id="@+id/txtHelloWorld"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="Hello World"
+            android:text="@{user.helloWorld}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--todo 4 (next MainActvity.kt)-->
         <EditText
             android:id="@+id/edtName"
             android:layout_width="wrap_content"
@@ -27,6 +37,7 @@
             android:layout_marginTop="50dp"
             android:ems="10"
             android:hint="Name"
+            android:text="@{user.name}"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

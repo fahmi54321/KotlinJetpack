@@ -7,19 +7,19 @@ import com.example.kotlinjetpack.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    // todo 3
+    // todo 5
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // todo 4
+        // todo 6
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
-        // todo 5 (finish)
-        binding.btnSimpan.setOnClickListener {
-            var data = binding.edtName.text.toString()
-            binding.txtHelloWorld.text = data
-        }
+        // todo 7
+        var user = User("Hello World","Fahmi")
+
+        // todo 8 (finish)
+        binding.user = user
     }
 }

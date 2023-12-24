@@ -32,7 +32,6 @@ android {
     }
 
 
-    // todo 1 (next activity_main.xml)
     buildFeatures{
         dataBinding = true
     }
