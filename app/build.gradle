@@ -30,6 +30,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+
+    // todo 1 (next activity_main.xml)
+    buildFeatures{
+        dataBinding = true
+    }
 }
 
 dependencies {
