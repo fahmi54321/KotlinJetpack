@@ -2,16 +2,17 @@ package com.example.kotlinjetpack
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinjetpack.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    // todo 6
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainActivityViewModel
-
-    // todo 4
     private lateinit var factory: MainActivityViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,16 +20,15 @@ class MainActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
-        // todo 5 (finish)
+        // todo 7 (next activity_main.xml)
         factory = MainActivityViewModelFactory(100)
         viewModel = ViewModelProvider(this,factory)[MainActivityViewModel::class.java]
+        binding.myViewModel = viewModel
 
-        binding.counter = viewModel.getCurrentCount()
+        viewModel.getCounter.observe(this) { observeCounter(it) }
+    }
 
-        binding.btnCounter.setOnClickListener {
-            binding.counter = Counter(viewModel.getUpdatedCount())
-        }
-
-
+    private fun observeCounter(it: Counter?) {
+        binding.counter = it
     }
 }

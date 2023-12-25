@@ -3,7 +3,7 @@ package com.example.kotlinjetpack
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-// todo 1 (next MainActivityViewModel)
+// todo 5 (next MainActivity)
 class MainActivityViewModelFactory(private var startingNum: Int): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(MainActivityViewModel::class.java)){

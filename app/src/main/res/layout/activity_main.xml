@@ -5,10 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+<!--todo 8-->
+
     <data>
         <variable
             name="counter"
             type="com.example.kotlinjetpack.Counter" />
+        <variable
+            name="myViewModel"
+            type="com.example.kotlinjetpack.MainActivityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +21,7 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+        <!--todo 9-->
         <TextView
             android:id="@+id/txtCounter"
             android:layout_width="wrap_content"
@@ -26,12 +32,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--todo 10 (finish)-->
         <Button
             android:id="@+id/btnCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="Counter"
+            android:onClick="@{()-> myViewModel.setCounter()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtCounter" />
