@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--todo 1 -->
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--todo 2 -->
     <data>
         <variable
-            name="user"
-            type="com.example.kotlinjetpack.User" />
+            name="counter"
+            type="com.example.kotlinjetpack.Counter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,39 +16,24 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <!--todo 3-->
         <TextView
-            android:id="@+id/txtHelloWorld"
+            android:id="@+id/txtCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="@{user.helloWorld}"
+            android:text="@{Integer.toString(counter.count)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!--todo 4 (next MainActvity.kt)-->
-        <EditText
-            android:id="@+id/edtName"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginTop="50dp"
-            android:ems="10"
-            android:hint="Name"
-            android:text="@{user.name}"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtHelloWorld" />
-
         <Button
-            android:id="@+id/btnSimpan"
+            android:id="@+id/btnCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="Simpan"
+            android:text="Counter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtName" />
+            app:layout_constraintTop_toBottomOf="@+id/txtCounter" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
