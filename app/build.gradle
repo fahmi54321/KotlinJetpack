@@ -1,16 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id("androidx.navigation.safeargs.kotlin") // todo 1
 }
 
 android {
     namespace 'com.example.kotlinjetpack'
-    compileSdk 33
+    compileSdk 34 // todo 2
 
     defaultConfig {
         applicationId "com.example.kotlinjetpack"
         minSdk 24
-        targetSdk 33
+        targetSdk 34 // todo 3
         versionCode 1
         versionName "1.0"
 
@@ -24,11 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17 // todo 4
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17' // todo 5
     }
 
 
@@ -39,15 +40,17 @@ android {
 
 dependencies {
 
-    def lifecycle_version = "2.6.2"
+    // todo 6 (next gradle module)
+    def nav_version = "2.7.6"
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
