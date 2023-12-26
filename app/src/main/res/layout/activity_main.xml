@@ -2,46 +2,83 @@
 
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--todo 8-->
-
+<!--todo 16-->
     <data>
         <variable
-            name="counter"
-            type="com.example.kotlinjetpack.Counter" />
-        <variable
-            name="myViewModel"
-            type="com.example.kotlinjetpack.MainActivityViewModel" />
+            name="userViewModel"
+            type="com.example.kotlinjetpack.viewModel.UserViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@color/white"
         tools:context=".MainActivity">
-
-        <!--todo 9-->
-        <TextView
-            android:id="@+id/txtCounter"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="@{Integer.toString(counter.count)}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal">
 
-        <!--todo 10 (finish)-->
-        <Button
-            android:id="@+id/btnCounter"
-            android:layout_width="wrap_content"
+            <!--todo 17-->
+            <EditText
+                android:text="@={userViewModel.inputName}"
+                android:id="@+id/editName"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Masukkan nama"
+                android:inputType="text" />
+
+            <!--todo 18-->
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:onClick="@{() -> userViewModel.saveOrUpdate()}"
+                android:text="@{userViewModel.saveOrUpdateButtonText}" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="Counter"
-            android:onClick="@{()-> myViewModel.setCounter()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtCounter" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <!--todo 19-->
+            <EditText
+                android:id="@+id/editEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:text="@={userViewModel.inputEMail}"
+                android:hint="Masukkan email"
+                android:inputType="text" />
+
+            <!--todo 20 (next MainAcitivy.kt)-->
+            <Button
+                android:id="@+id/btnDel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:onClick="@{()-> userViewModel.clearAllOrDelete()}"
+                android:text="@{userViewModel.clearAllOrDeleteButtonText}" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            tools:listitem="@layout/item"
+            android:id="@+id/rvData"/>
+    </LinearLayout>
 </layout>
