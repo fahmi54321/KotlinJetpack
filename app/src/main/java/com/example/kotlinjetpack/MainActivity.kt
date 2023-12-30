@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinjetpack.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,10 +23,12 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
         CoroutineScope(Dispatchers.IO).launch {
-            val one = numberOne() // run pertama kali
-            val two = numberTwo() // run setelah selesai yang pertama
+            val one = async { numberOne() }
+            val two = async { numberTwo() }
 
-            val result = one.plus(two) // run setelah selesai yang ketiga
+            // method one and two run barengan
+
+            val result = one.await().plus(two.await()) // run setelah selesai kedua method
 
             Log.e("TAG","Result : $result")
         }
