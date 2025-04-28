@@ -14,7 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // todo 4
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         // todo 5 (finish)
         binding.btnSimpan.setOnClickListener {
